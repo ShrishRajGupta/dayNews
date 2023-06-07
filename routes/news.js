@@ -1,0 +1,1 @@
+console.log("Welcome to news.js");
