@@ -12,7 +12,7 @@ route.get('/', async (req, res) => {
         const url = `http://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`;
 
         const news_get = await axios.get(url)
-        console.log(news_get.data);
+        // console.log(news_get.data);
         res.render('news', { articles: news_get.data.articles })
 
     } catch (err) {
