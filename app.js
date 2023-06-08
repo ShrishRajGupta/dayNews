@@ -4,12 +4,11 @@ const port = process.env.PORT||3000;
 const moment = require('moment')
 app.locals.moment = moment;
 
-// template engine  
-app.set('view engine','ejs')
 
 // middleware & statics
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }));
+// template engine  
+app.set('view engine','ejs')
 
 app.use('/',require('./routes/news.js'))
 
