@@ -37,5 +37,20 @@ route.post('/search', async (req, res) => {
         console.log(err);
     }
 });
+route.get('/news/:category',async(req,res)=>{
+    var category = req.params.category;
+    try {
+        var url = 'http://newsapi.org/v2/top-headlines?country=in&category=' + category + '&apiKey='+apiKey;
+
+        const news_get =await axios.get(url)
+        res.render('news',{articles:news_get.data.articles})
+
+    } catch (error) {
+        if(error.response){
+            console.log(error)
+        }
+
+    }
+})
 
 module.exports = route
