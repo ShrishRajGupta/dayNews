@@ -24,7 +24,7 @@ route.get('/', async (req, res) => {
 // @desc = a post request for searching specific data
 // @respose = it is sent to news.ejs 
 route.post('/search', async (req, res) => {
-    const search = req.body.search
+    const search = req.body;
     // console.log(req.body.search);
 
     try {
@@ -34,9 +34,13 @@ route.post('/search', async (req, res) => {
         res.render('news', { articles: news_get.data.articles })
 
     } catch (err) {
-        console.log(err);
+        if(error.response){
+            console.log(error)
+        }
     }
 });
+//@desc = a get request to access different categories
+//response = it is sent to news.ejs
 route.get('/news/:category',async(req,res)=>{
     var category = req.params.category;
     try {
