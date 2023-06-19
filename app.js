@@ -4,6 +4,10 @@ const port = process.env.PORT||3000;
 const moment = require('moment')
 app.locals.moment = moment;
 
+// DB
+const connectDB = require('./config/conn.js');
+connectDB();
+
 
 // middleware & statics
 app.use(express.static('public'))
