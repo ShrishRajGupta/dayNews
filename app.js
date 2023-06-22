@@ -11,10 +11,14 @@ connectDB();
 
 // middleware & statics
 app.use(express.static('public'))
+const authenticateToken = require('./middleware/validate.js');
+app.use(express.json());
+
 // template engine  
 app.set('view engine','ejs')
 
-app.use('/',require('./routes/news.js'))
+app.use('/user',require('./routes/userRoutes.js'))
+app.use('/',authenticateToken,require('./routes/news.js'))
 
 app.set('views','./views')
 

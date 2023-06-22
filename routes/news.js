@@ -24,7 +24,7 @@ route.get('/', async (req, res) => {
 // @desc = a post request for searching specific data
 // @respose = it is sent to news.ejs 
 route.post('/search', async (req, res) => {
-    const search = req.body;
+    const search = req.body.search;
     // console.log(req.body.search);
 
     try {
