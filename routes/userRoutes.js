@@ -20,4 +20,11 @@ router.get('/login',async(req,res)=>{
 router.route('/login')
     .post(loginUser);
 
+router.get('/logout',async(req,res)=>{
+    return res
+    .clearCookie("authorization")
+    .status(200)
+    .redirect('/');
+})
+
 module.exports = router;

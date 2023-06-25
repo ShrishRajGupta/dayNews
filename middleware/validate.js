@@ -4,13 +4,12 @@ const env = require('dotenv').config()
 const secretKey = process.env.ACCESS_TOKEN;
 
 const authenticateToken = (req, res, next) => {
-    const token = req.headers.authorization;
+    const token = req.cookies.authorization;
 
     if (!token) {
         console.log(`Token not found`);
         res.redirect('/user/register')
             .status(401);
-        // return res.status(401).json({ message: 'No token provided' });
     }
 
     try {

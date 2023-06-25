@@ -4,6 +4,7 @@ const port = process.env.PORT||3000;
 const moment = require('moment')
 app.locals.moment = moment;
 const bodyParser = require('body-parser')
+const cookieParser=require('cookie-parser');
 
 // DB
 const connectDB = require('./config/conn.js');
@@ -16,6 +17,7 @@ app.use(express.json());
 // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cookieParser());
 
 // template engine  
 app.set('view engine','ejs')

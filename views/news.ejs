@@ -3,6 +3,10 @@
 <body>
 
 <%- include("partials/navbar.ejs") %> 
+<form action="/user/<%- value %>" method="get">
+    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><%- value %></button>
+  </form>
+</nav>
 
     <div class="news-container ">
         <div class="news ">
