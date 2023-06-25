@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const axios = require('axios')
 const route = express.Router();
+const authenticateToken = require('../middleware/validate.js');
 
 
 const apiKey = process.env.API_KEY;
@@ -23,7 +24,7 @@ route.get('/', async (req, res) => {
 
 // @desc = a post request for searching specific data
 // @respose = it is sent to news.ejs 
-route.post('/search', async (req, res) => {
+route.post('/search',authenticateToken, async (req, res) => {
     const search = req.body.search;
     // console.log(req.body.search);
 
@@ -41,7 +42,7 @@ route.post('/search', async (req, res) => {
 });
 //@desc = a get request to access different categories
 //response = it is sent to news.ejs
-route.get('/news/:category',async(req,res)=>{
+route.get('/news/:category',authenticateToken,async(req,res)=>{
     var category = req.params.category;
     try {
         var url = 'http://newsapi.org/v2/top-headlines?country=in&category=' + category + '&apiKey='+apiKey;

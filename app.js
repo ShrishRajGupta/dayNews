@@ -12,7 +12,6 @@ connectDB();
 
 // middleware & statics
 app.use(express.static('public'))
-const authenticateToken = require('./middleware/validate.js');
 app.use(express.json());
 // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -20,12 +19,12 @@ app.use(bodyParser.json())
 
 // template engine  
 app.set('view engine','ejs')
-
-
-app.use('/user',require('./routes/userRoutes.js'))
-app.use('/',authenticateToken,require('./routes/news.js'))
-
 app.set('views','./views')
+
+
+app.use('/',require('./routes/news.js'))
+app.use('/user',require('./routes/userRoutes.js'))
+
 
 // 404
 app.use((req, res, next) => {

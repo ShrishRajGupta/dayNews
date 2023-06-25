@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const env = require('dotenv').config()
 const User = require('../models/userSchema.js');
 
+//@desc = a post request to register new user
+//response = it is sent to news.ejs
 const registerUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -22,17 +24,23 @@ const registerUser = async (req, res) => {
         const member = await User.create({
             username,email,password: hashPasscode,
         });
-        /////////////////
-        res.status(201).json({
-                email: member.email,username: member.username,_id: member.id
-            });
+        
+        // Token generation and storage
+        member.token=checkF(member);
+        res.status(200).redirect('/');
+
+        // req.headers.authorization=member.token;
+        // res.status(201).json({
+        //         email: member.email,username: member.username,_id: member.id,token:member.token
+        //     });
     }
     catch (err) {
         console.log(err);
         res.status(500).json({ message: 'Server Error' });
-    }
-};
+    }};
 
+//@desc = a get request to verify logged in user 
+//response = it is sent to news.ejs
 const loginUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -51,26 +59,40 @@ const loginUser = async (req, res) => {
 
         // Generation of JWT
         if (user && check) {
-            const token = jwt.sign({
-                user: {username: user.username,email: user.email,id: user._id}
-            },
-                process.env.ACCESS_TOKEN,
-                {
-                    expiresIn: "2h"
-                }
-            );
-            user.token = token;
-            res.status(200).json({ token });
+            user.token = checkF(user);
+            res.status(200).redirect('/');
+            // req.headers.authorization=user.token;
+            // res.status(200).json({token:user.token });
         }else {
             res.status(401);
             throw new Error('Validation Error');
         }
+        // token generated
     }
     catch (err) {
         console.log(err);
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+// Generates JWT
+const checkF= function(user){
+    try{
+        const token = jwt.sign({
+            user: {username: user.username,email: user.email,id: user._id}
+        },
+            process.env.ACCESS_TOKEN,
+            {
+                expiresIn: "2h"
+            }
+        );
+        return token;
+    }
+    catch{
+        res.status(401);
+        throw new Error('Validation Error');
+    }
+}
 
 module.exports = {
     registerUser,

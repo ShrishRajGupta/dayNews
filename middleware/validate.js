@@ -7,22 +7,21 @@ const authenticateToken = (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!token) {
-        return res.status(401).json({ message: 'No token provided' });
+        console.log(`Token not found`);
+        res.redirect('/user/register')
+            .status(401);
+        // return res.status(401).json({ message: 'No token provided' });
     }
 
     try {
         // Verify the token and decode its payload
         const decodedToken = jwt.verify(token, secretKey);
-
-        
         req.user = decodedToken.user; 
-        // .user isliye toh jwt.sign deko
-        // else use decodedToken only
-
         // Proceed to the next middleware or route handler
         next();
     } catch (error) {
-        return res.status(403).json({ message: 'Invalid token' });
+        return res.status(403)
+        .json({ message: 'Invalid token' });
     }
 }
 

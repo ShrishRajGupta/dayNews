@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %> 
+
+<body>  
+    <%- include("partials/navbar.ejs") %> 
+
+    <div class = "box">
+        <span class="borderLine"></span>
+        <form action="/user/register" method="post">
+            <h2>register</h2>
+
+            <div class = 'inputBox'>
+                <input type="text" name="username" required="required">
+                <span>Username</span>
+                <i></i>
+            </div>
+
+            <div class = 'inputBox'>
+                <input type="email" name="email" required="required">
+                <span>E-mail</span>
+                <i></i>
+            </div>
+
+
+            <div class="inputBox">
+                <input type="password" name="password" required="required">
+                <span>Password</span>
+                <i></i>
+            </div>
+
+            <div class = "links">
+                <a href="./register"> Register</a>
+            </div>
+            
+            <input type="submit" value="register">
+        </form>
+        
+    </div>
+    <script src="moment.js"></script>
+<script src="moment-timezone-with-data.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
