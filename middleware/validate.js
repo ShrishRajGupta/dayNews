@@ -9,7 +9,7 @@ const authenticateToken = (req, res, next) => {
     if (!token) {
         console.log(`Token not found`);
         res.redirect('/user/register')
-            .status(401);
+            .status(401); 
     }
 
     try {
@@ -20,7 +20,7 @@ const authenticateToken = (req, res, next) => {
         next();
     } catch (error) {
         return res.status(403)
-        .json({ message: 'Invalid token' });
+        .json({ message: 'Invalid token' }); // redirect to /
     }
 }
 

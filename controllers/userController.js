@@ -8,13 +8,13 @@ const User = require('../models/userSchema.js');
 const registerUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        if (!username || !email || !password)
-            res.status(400).json({ msg: "All fields are required" });
+        if (!username || !email || !password) 
+            res.status(400).redirect('/user/register');// redirect to register
 
         //Checking DB for unique User
         const existingUser = await User.findOne({ email });
         if (existingUser)
-            res.status(409).json({ msg: "User already exist" });
+            res.redirect('/user/login'); // redirect to login
 
         // hashing and salting password
         let salt = bcrypt.genSaltSync(10);
@@ -37,7 +37,7 @@ const registerUser = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).render(500) // render 500
     }
 };
 
@@ -47,17 +47,17 @@ const loginUser = async (req, res) => {
     try {
         const { username, email, password } = req.body;
         if (!username || !email || !password)
-            res.status(400).json({ msg: "All fields are required" });
+            res.status(400).redirect('/user/login'); // redirect to login
 
 
         //Checking DB for unique User and passwd
         const user = await User.findOne({ email });
         if (!user)
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).redirect('/user/login'); // redirect to login
 
         const check = await bcrypt.compare(password, user.password);
         if (!check)
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).redirect('/user/login'); // redirect to login
 
         // Generation of JWT
         if (user && check) {
@@ -70,14 +70,14 @@ const loginUser = async (req, res) => {
                 .status(200)
                 .redirect('/');
         } else {
-            res.status(401);
+            res.status(401).redirect('/user/register'); // redirect to register
             throw new Error('Validation Error');
         }
         // token generated
     }
     catch (err) {
-        console.log(err);
-        res.status(500).json({ message: 'Server Error' });
+        console.log(err); // render to 500
+        res.status(500).render('500');
     }
 };
 
@@ -95,7 +95,6 @@ const checkF = function (user) {
         return token;
     }
     catch {
-        res.status(401);
         throw new Error('Validation Error');
     }
 }

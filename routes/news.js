@@ -16,7 +16,8 @@ route.get('/', async (req, res) => {
         else
             res.render('news', { articles: news_get.data.articles, value: "logout" })
     } catch (err) {
-        console.log(err);
+        console.log(err); // render 500
+        res.status(500).render('500');
     }
 });
 
@@ -32,7 +33,8 @@ route.post('/search', authenticateToken, async (req, res) => {
 
     } catch (error) {
         if (error.response) {
-            console.log(error)
+            console.log(error) // render 500
+        res.status(500).render('500');            
         }
     }
 });
@@ -48,7 +50,8 @@ route.get('/news/:category', authenticateToken, async (req, res) => {
 
     } catch (error) {
         if (error.response) {
-            console.log(error)
+            console.log(error) // render 500
+        res.status(500).render('500');
         }
 
     }
