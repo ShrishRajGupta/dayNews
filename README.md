@@ -1,4 +1,30 @@
 # dayNews
+<br>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#description">Description</a>
+      <ul>
+        <li><a href="#website-link">Website Link</a></li>
+      </ul>
+    </li>
+    <li>
+      Getting Started
+      <ul>
+       <li><a href="#requirements"> Requirements</a></li>
+       <li><a href="#installation"> Installation</a></li>
+      </ul>
+    </li>
+       <li><a href="#maintainers-👨‍💻">Maintainers</a></li>
+    <li><a href="#licence-🍁">Licence</a></li>
+    <li><a href="#contributing-💙">Contributing</a></li>
+    <li><a href="#💖-like-this-project">Like this project</a></li>
+  </ol>
+</details>
+
 
 ## Description
 Welcome to The [**dayNews**](https://day-news.cyclic.app/), your go-to destination for timely and reliable news from around the globe. We strive to bring you the most comprehensive coverage of national and international events, ensuring you stay informed and engaged in today's rapidly changing world.
@@ -18,7 +44,7 @@ https://day-news.cyclic.app/
 ## Requirements
 [dayNews](https://github.com/ShrishRajGupta/dayNews) is a NodeJS application based on **News API**.
 
-For codebase usse the package manager [npm](https://www.npmjs.com/) to install [dayNews](https://github.com/ShrishRajGupta/dayNews).
+For the codebase use the package manager [npm](https://www.npmjs.com/) to install [dayNews](https://github.com/ShrishRajGupta/dayNews).
 
 <br>
 
@@ -35,14 +61,14 @@ nodemon app.js
 - ### [Abhishek Yadav](https://github.com/AbhishekYMNNIT)  [<img height="13" src="https://cdn.svgporn.com/logos/linkedin.svg" />](https://www.linkedin.com/in/abhishekyadav123/)
 
 ## Licence 🍁
-**ISC**
+**MIT**
 
 ## Contributing 💙
 
-PR's are welcome !
+PR's are welcome!
 
-Found a Bug ? Create an Issue.
+Found a Bug? Create an Issue.
 
-## 💖 Like this project ?
+## 💖 Like this project?
 
 Leave a ⭐ If you think this project is cool.
