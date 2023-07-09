@@ -11,10 +11,16 @@ route.get('/', async (req, res) => {
     try {
         const url = `http://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`;
         const news_get = await axios.get(url)
-        if (req.cookies.authorization === undefined || req.cookies.authorization === null)
-            res.render('news', { articles: news_get.data.articles, value: "login" })
-        else
-            res.render('news', { articles: news_get.data.articles, value: "logout" })
+        if (req.cookies.authorization === undefined || req.cookies.authorization === null){
+            res.locals.value= "login";
+            // next();
+            res.render('news', { articles: news_get.data.articles})
+        }
+        else{
+            res.locals.value= "logout";
+            // next();
+            res.render('news', { articles: news_get.data.articles})
+        }
     } catch (err) {
         console.log(err); // render 500
         res.status(500).render('500');
