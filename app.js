@@ -5,6 +5,7 @@ const moment = require('moment')
 app.locals.moment = moment;
 const bodyParser = require('body-parser')
 const cookieParser=require('cookie-parser');
+const router = express.Router();
 
 // DB
 const connectDB = require('./config/conn.js');
@@ -24,16 +25,13 @@ app.set('view engine','ejs')
 app.set('views','./views')
 
 
-app.use('/',require('./routes/news.js'))
-app.use('/user',require('./routes/userRoutes.js'))
-
+router.use('/',require('./routes/news.js'))
+router.use('/user',require('./routes/userRoutes.js'))
+app.use('/api',router)
 
 // 404
 app.use((req, res, next) => {
     res.status(404).render('404', { title: 'error page' });
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-  });
-  
+module.exports = app;
