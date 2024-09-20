@@ -9,7 +9,7 @@ const apiKey = process.env.API_KEY;
 // @desc = it gets all daily headlines 
 route.get('/', async (req, res) => {
     try {
-        const url = `http://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
         const news_get = await axios.get(url)
         if (req.cookies.authorization === undefined || req.cookies.authorization === null){
             res.locals.value= "login";

@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: rgb(8, 5, 10);
+    background-color: #ffc107;
 }
 .box {
     position: relative;
