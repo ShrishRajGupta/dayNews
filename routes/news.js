@@ -1,16 +1,20 @@
 require('dotenv').config()
+const {getJson } =require("serpapi");
 const express = require('express')
 const axios = require('axios')
 const route = express.Router();
 const authenticateToken = require('../middleware/validate.js');
 
-const apiKey = process.env.API_KEY;
+// const serpApiKey = process.env.serp_API;
+const newsApiKey=process.env.NEWSAPI_KEY;
 
 // @desc = it gets all daily headlines 
 route.get('/', async (req, res) => {
     try {
-        const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
-        const news_get = await axios.get(url)
+        const url=`https://saurav.tech/NewsAPI/everything/cnn.json`;
+        const news_get=await axios.get(url);
+        
+       
         if (req.cookies.authorization === undefined || req.cookies.authorization === null){
             res.locals.value= "login";
             // next();
@@ -33,7 +37,7 @@ route.get('/', async (req, res) => {
 route.post('/search', authenticateToken, async (req, res) => {
     const search = req.body.search;
     try {
-        const url = `http://newsapi.org/v2/everything?q=${search}&apiKey=${apiKey}`
+        const url = `http://newsapi.org/v2/everything?q=${search}&apiKey=${newsApiKey}`
         const news_get = await axios.get(url)
         res.render('news', { articles: news_get.data.articles, value: "logout" })
 
@@ -47,10 +51,9 @@ route.post('/search', authenticateToken, async (req, res) => {
 //@desc = a get request to access different categories
 //response = it is sent to news.ejs
 route.get('/news/:category', authenticateToken, async (req, res) => {
-    var category = req.params.category;
+    let category = req.params.category.toLowerCase().toString();
     try {
-        var url = 'http://newsapi.org/v2/top-headlines?country=in&category=' + category + '&apiKey=' + apiKey;
-
+        const url=`https://saurav.tech/NewsAPI/top-headlines/category/${category}/in.json`
         const news_get = await axios.get(url)
         res.render('news', { articles: news_get.data.articles, value: "logout" })
 

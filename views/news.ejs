@@ -10,7 +10,7 @@
             <% articles.forEach(function(article,index){ %>
 
                 <% if ((typeof article.url=='object') || (typeof article.title=='object') || (typeof article.urlToImage=='object') || (typeof article.content=='object')){ %>
-                   
+                   <% }else{ %>
                         <a href="<%- article.url %>" target="_blank" class="news-box Hover-effect">
 
                             <img src="<%- article.urlToImage %>" alt="Image">
