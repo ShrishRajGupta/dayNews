@@ -27,11 +27,11 @@
 
 
 ## Description
-Welcome to The [**dayNews**](https://day-news.cyclic.app/), your go-to destination for timely and reliable news from around the globe. We strive to bring you the most comprehensive coverage of national and international events, ensuring you stay informed and engaged in today's rapidly changing world.
+Welcome to The [**dayNews**](https://daynews.onrender.com/), your go-to destination for timely and reliable news from around the globe. We strive to bring you the most comprehensive coverage of national and international events, ensuring you stay informed and engaged in today's rapidly changing world.
 
 ## Website Link
 
-https://day-news.cyclic.app/
+https://daynews.onrender.com/
 
 ## Screenshot
 <p align="left">
