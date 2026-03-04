@@ -61,7 +61,7 @@ nodemon app.js
 - ### [Abhishek Yadav](https://github.com/AbhishekYMNNIT)  [<img height="13" src="https://cdn.svgporn.com/logos/linkedin.svg" />](https://www.linkedin.com/in/abhishekyadav123/)
 
 ## Licence 🍁
-**MIT**
+### [**MIT**](/LICENSE)  &copy; [Shrish Raj Gupta](https://github.com/ShrishRajGupta)
 
 ## Contributing 💙
 
